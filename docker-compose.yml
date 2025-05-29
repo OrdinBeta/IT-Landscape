@@ -6,10 +6,14 @@ services:
     ports:
     - "8080:80"
     volumes:
-    - /var/www/html/modules
-    - /var/www/html/profiles
-    - /var/www/html/themes
-    - /var/www/html/sites
+    - ./drupal/modules:/var/www/html/modules
+    - ./drupal/profiles:/var/www/html/profiles
+    - ./drupal/themes:/var/www/html/themes
+    - ./drupal/sites:/var/www/html/sites
+    # - /var/www/html/modules
+    # - /var/www/html/profiles
+    # - /var/www/html/themes
+    # - /var/www/html/sites
     depends_on:
       - db
     restart: always
@@ -28,6 +32,8 @@ services:
     restart: always
     ports:
       - 8081:8080
+    depends_on:
+      - db
 
 # Needed for IT-Landscape but not required for Drupal
   mongo:
@@ -47,3 +53,5 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: test
       ME_CONFIG_MONGODB_URL: mongodb://root:test@mongo:27017/
       ME_CONFIG_BASICAUTH: false
+    depends_on:
+      - mongo
