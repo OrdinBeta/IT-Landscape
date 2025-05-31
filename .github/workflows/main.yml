@@ -25,12 +25,8 @@ jobs:
             # Cache compose binary to GitHub Actions cache backend
             # cache-binary: true
 
-            - name: Docker Compose Command
-              uses: blag/action-docker-compose@v0.0.1
-              with:
-                  # Command line arguments for docker-compose
-                  cli-args: up -d
-                  working-directory: ${{ github.workspace }}
+            - name: docker-compose up
+              run: docker-compose up -d
 
             - name: health-check-for-website
               uses: Mustafakhn/health-check-action@v2
