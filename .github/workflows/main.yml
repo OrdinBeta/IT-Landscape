@@ -26,7 +26,7 @@ jobs:
             # cache-binary: true
 
             - name: docker-compose up
-              run: docker-compose up -d
+              run: docker compose up -d
 
             - name: health-check-for-website
               uses: Mustafakhn/health-check-action@v2
