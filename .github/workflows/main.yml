@@ -1,4 +1,4 @@
-name: TEST
+name: Test-Drupal-site
 
 on:
     push:
@@ -11,7 +11,7 @@ on:
 # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/setting-a-default-shell-and-working-directory
 
 jobs:
-    TEST:
+    Test-Drupal-site:
         runs-on: ubuntu-latest
         steps:
             - name: Docker Setup Compose
