@@ -7,9 +7,11 @@ on:
         branches: [main]
 
 # https://docs.docker.com/build/ci/github-actions/
+# https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
+# https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/setting-a-default-shell-and-working-directory
 
 jobs:
-    build:
+    TEST:
         runs-on: ubuntu-latest
         steps:
             # https://github.com/marketplace/actions/docker-setup-compose
@@ -28,6 +30,7 @@ jobs:
               with:
                   # Command line arguments for docker-compose
                   cli-args: up -d
+                  working-directory: ${{ github.workspace }}
 
             - name: health-check-for-website
               uses: Mustafakhn/health-check-action@v2
